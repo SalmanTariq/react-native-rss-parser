@@ -189,7 +189,8 @@ function getItemEnclosures(node) {
 }
 
 function getMedia(node) {
-  const media = utils.getChildElements(node,'media');
+  const media = utils.getChildElements(node, 'media');
+  console.log(media);
   return {
     url: media.getAttribute('content'),
   }
