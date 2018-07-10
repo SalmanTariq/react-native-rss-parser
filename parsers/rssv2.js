@@ -127,7 +127,8 @@ function mapItems(document) {
       categories: getItemCategories(item),
       published: getItemPublished(item),
       enclosures: getItemEnclosures(item),
-      itunes: itunesParser.parseItem(item)
+      itunes: itunesParser.parseItem(item),
+      media: getMedia(item)
     };
   });
 }
@@ -185,4 +186,11 @@ function getItemEnclosures(node) {
       mimeType: enclosure.getAttribute('type')
     }
   });
+}
+
+function getMedia(node) {
+  const media = utils.getChildElements(node,'media');
+  return {
+    url: media.getAttribute('content'),
+  }
 }
