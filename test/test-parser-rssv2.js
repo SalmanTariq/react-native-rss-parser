@@ -6,9 +6,9 @@ var rssv2InvalidNoChannel = require('./samples/rssv2-invalid-no-channel');
 var rssv2WithItunes = require('./samples/rssv2-with-itunes');
 var rssParser = require('../index');
 
-describe('when rss parse', function() {
-  describe('valid document', function() {
-    it('should return rss items', function() {
+describe('when rss parse', function () {
+  describe('valid document', function () {
+    it('should return rss items', function () {
       return rssParser.parse(rssv2.feed)
         .then((result) => {
           assert.equal(result.title, 'Scripting News');
@@ -32,13 +32,14 @@ describe('when rss parse', function() {
           assert.equal(result.items[0].enclosures[0].url, 'http://www.scripting.com/mp3s/weatherReportSuite.mp3');
           assert.equal(result.items[0].enclosures[0].length, '12216320');
           assert.equal(result.items[0].enclosures[0].mimeType, 'audio/mpeg');
+          assert.equal(result.items[0].media[0].url, 'http://i.dawn.com/large/2018/07/5b44240494c44.jpg');
           assert.equal(result.items[1].published, 'Sun, 29 Sep 2002 19:59:01 GMT');
         });
     });
   });
 
-  describe('multiple categories', function() {
-    it('should return correct arrays when multiple groups with the same key', function() {
+  describe('multiple categories', function () {
+    it('should return correct arrays when multiple groups with the same key', function () {
       return rssParser.parse(rssv2MultipleCategories.feed)
         .then((result) => {
           assert.equal(result.categories.length, 2);
@@ -51,8 +52,8 @@ describe('when rss parse', function() {
     });
   });
 
-  describe('with itunes elements', function() {
-    it('should return itunes information for channel and item elements', function() {
+  describe('with itunes elements', function () {
+    it('should return itunes information for channel and item elements', function () {
       return rssParser.parse(rssv2WithItunes.feed)
         .then((result) => {
           assert.notEqual(result.itunes, undefined);
@@ -101,8 +102,8 @@ describe('when rss parse', function() {
     });
   });
 
-  describe('invalid document', function() {
-    it('should reject promise', function() {
+  describe('invalid document', function () {
+    it('should reject promise', function () {
       return rssParser.parse(rssv2InvalidFormat.feed)
         .then((result) => {
           assert.fail('Should be invalid');
@@ -113,8 +114,8 @@ describe('when rss parse', function() {
     });
   });
 
-  describe('when feed has no channel element', function() {
-    it('should reject promise', function() {
+  describe('when feed has no channel element', function () {
+    it('should reject promise', function () {
       return rssParser.parse(rssv2InvalidNoChannel.feed)
         .then((result) => {
           assert.fail('Should be invalid');

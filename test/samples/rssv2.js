@@ -28,6 +28,10 @@ exports.feed = `
 			<pubDate>Mon, 30 Sep 2002 01:56:02 GMT</pubDate>
 			<guid>http://scriptingnews.userland.com/backissues/2002/09/29#When:6:56:02PM</guid>
 			<enclosure url="http://www.scripting.com/mp3s/weatherReportSuite.mp3" length="12216320" type="audio/mpeg" />
+			<media:content url="http://i.dawn.com/large/2018/07/5b44240494c44.jpg" type="image/jpeg" medium="image">
+				<media:thumbnail url="http://i.dawn.com/thumbnail/2018/07/5b44240494c44.jpg"/>
+				<media:title> </media:title>
+			</media:content>
 		</item>
 		<item>
 			<description>Joshua Allen: &lt;a href=&quot;http://www.netcrucible.com/blog/2002/09/29.html#a243&quot;&gt;Who loves namespaces?&lt;/a&gt;</description>
